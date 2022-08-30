@@ -11,3 +11,10 @@ services:
       - 8000:8000
     environment:
       - DEBUG=1
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=postgres
+      - DB_HOST=beccas-database.ddns.net
+      - DB_PORT=5432
+      - STRIPE_PUBLIC=pk_test_51JLry9GYgLaTAwa8rnnrpWENfj5VQobc318CK5EjFgGW0lQj7KxhO4MlfoIc5otmIoJfXlSuavMUj4lebpqrjydm00MTpnjm0d
+      - STRIPE_SECRET=sk_test_51JLry9GYgLaTAwa8CTdeeXMTfWvF9KRJrsta8DwhsCa6M7A2EmnSofR2UkKAc3FEaVIAKt1FM3nTux3sPgHie6dS00zqzCMcZ1
