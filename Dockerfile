@@ -25,7 +25,7 @@ VOLUME ["$DOCKYARD_SRVHOME/media/", "$DOCKYARD_SRVHOME/logs/"]
 # Copy application source code to SRCDIR
 COPY $DOCKYARD_SRC $DOCKYARD_SRVPROJ
 # Install Python dependencies
-RUN pip install -r $DOCKYARD_SRVPROJ/requirement.txt
+RUN pip install -r $DOCKYARD_SRVPROJ/requirements.txt
 # Port to expose
 EXPOSE 8000
 # Copy entrypoint script into the image
