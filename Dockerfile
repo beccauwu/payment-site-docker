@@ -16,7 +16,6 @@ RUN apt-get install -y python-dev
 RUN apt-get install -y libmysqlclient-dev
 RUN apt-get install -y git
 RUN apt-get install -y vim
-RUN apt-get install -y mysql-server
 RUN apt-get install -y nginx
 # Create application subdirectories
 WORKDIR $DOCKYARD_SRVHOME
