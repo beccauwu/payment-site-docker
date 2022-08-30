@@ -9,9 +9,9 @@ tail -n 0 -f /srv/logs/*.log &
 echo Starting nginx 
 # Start Gunicorn processes
 echo Starting Gunicorn.
-exec gunicorn cv_django_merchandising.wsgi:application \
-    --name cv_django_merchandising \
-    --bind unix:django_app.sock \
+exec gunicorn shop.wsgi:application \
+    --name shop \
+    --bind unix:app.sock \
     --workers 3 \
     --log-level=info \
     --log-file=/srv/logs/gunicorn.log \
