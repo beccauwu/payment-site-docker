@@ -30,7 +30,7 @@ RUN pip install -r $DOCKYARD_SRVPROJ/requirements.txt
 EXPOSE 8000
 # Copy entrypoint script into the image
 WORKDIR $DOCKYARD_SRVPROJ
-COPY ./docker-entrypoint.sh /srv/app/docker-entrypoint.sh
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY ./django_nginx.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/django_nginx.conf /etc/nginx/sites-enabled
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
