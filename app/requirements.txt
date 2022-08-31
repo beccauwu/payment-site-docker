@@ -10,5 +10,4 @@ stripe
 tzdata
 urllib3
 gunicorn
-uWSGI
 psycopg2-binary
