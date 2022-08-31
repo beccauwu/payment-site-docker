@@ -63,6 +63,11 @@ RUN chmod +x  $APP_HOME/entrypoint.prod.sh
 
 RUN apk del dos2unix
 RUN apk add bash
+
+#copy certificates
+#COPY ./cert.pem .
+#COPY ./priv.pem .
+
 # copy project
 COPY . $APP_HOME
 
