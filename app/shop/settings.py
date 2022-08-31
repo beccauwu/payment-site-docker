@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', default='setmeinprod')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(config('DEBUG', default=0)))
 
-ALLOWED_HOSTS = [] if DEBUG else config('ALLOWED_HOSTS', default='', cast=lambda v: [s for s in v.split(',')])
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
