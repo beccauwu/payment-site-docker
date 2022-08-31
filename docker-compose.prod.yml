@@ -27,7 +27,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     ports:
-      - 5050:80
+      - 50500:80
     depends_on:
       - db
     volumes:
@@ -44,7 +44,18 @@ services:
     ports:
       - 1337:80
     depends_on:
-      - web, pgadmin
+      - web
+      - pgadmin
+  pgbackups:
+    image: schickling/postgres-backup-s3
+    links:
+      - db
+    env_file:
+      - ./.pgbackups.env
+  pgrestore:
+    image: schickling/postgres-restore-s3
+    env_file:
+      - ./.pgbackups.env
 
 volumes:
   postgres_data:
