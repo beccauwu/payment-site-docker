@@ -12,7 +12,7 @@ services:
     expose:
       - 8000
     env_file:
-      - ./.prod.env
+      - .env/.prod.env
     depends_on:
       - db
   db:
@@ -23,7 +23,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.db.env
+      - .env/.db.env
   pgadmin:
     image: dpage/pgadmin4
     ports:
@@ -33,7 +33,7 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin/data/
     env_file:
-      - ./.pgadmin.env
+      - .env/.pgadmin.env
     links: 
       - "db:pgsql-server"
   nginx:
@@ -46,16 +46,7 @@ services:
     depends_on:
       - web
       - pgadmin
-  pgbackups:
-    image: schickling/postgres-backup-s3
-    links:
-      - db
-    env_file:
-      - ./.pgbackups.env
-  pgrestore:
-    image: schickling/postgres-restore-s3
-    env_file:
-      - ./.pgbackups.env
+
 
 volumes:
   postgres_data:
