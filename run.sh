@@ -8,18 +8,18 @@ read num
 case $num in
     1)
         echo "running build..."
-        source bin/build.sh
+        source bin/sh/build.sh
         ;;
     2)
         echo "running maintenance..."
-        source bin/maintenance.sh
+        source bin/sh/maintenance.sh
         ;;
     3)
         echo "running config..."
-        source bin/config.sh
+        source bin/sh/config.sh
         ;;
     4)
         echo "running restore database..."
-        source bin/db_restore.sh
+        source bin/sh/db_restore.sh
         ;;
 esac

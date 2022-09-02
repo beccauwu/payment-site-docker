@@ -78,7 +78,7 @@ printf "Production environment configuration complete.\n\n"
 read -p "Do you want to build the production environment now? (y/n):" build_now
 if [ "$build_now" == "y" ] || [ "$build_now" == "Y" ]
 then
-    ./build.sh
+    source bin/sh/build.sh
 else
     printf "\n"
     printf "Build the production environment by running ./build.sh\n"
