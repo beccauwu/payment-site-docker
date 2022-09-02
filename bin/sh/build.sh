@@ -94,10 +94,14 @@ if [ "$continue_build" == "y" ]; then
     printf "Building the production environment...\n"
     docker compose -f docker-compose.prod.yml up -d --build
     printf "Done.\n"
+    read -r firstline<.env/.prod.env
+    echo "Your app is now available at:"
+    echo $firstline | cut -d "=" -f 2
+    printf "\n"
     printf "Now please forward your domain to this server in your DNS settings\n"
     printf "It is highly advisable to do this through a proxy.\n"
     printf "You can find instructions on how to do this here:\n"
-    printf "https://github.com/beccauwu/docker-production-automated\n"
+    printf "https://github.com/beccauwu/django-dockerise\n"
     exit 0
 else
     printf "\n"

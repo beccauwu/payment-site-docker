@@ -64,6 +64,7 @@ while true; do
     continue
 done
 cat <<EOF > $prod_file
+DJANGO_TRUSTED_ORIGINS=https://$prod_domain
 SQL_USER=$db_user
 SQL_PASSWORD=$db_password
 SQL_DATABASE=$db_name
@@ -71,7 +72,6 @@ SQL_HOST=db
 SQL_PORT=5432
 DATABASE=postgres
 DJANGO_ALLOWED_HOSTS=$prod_domain
-DJANGO_TRUSTED_ORIGINS=https://$prod_domain
 EOF
 
 printf "Production environment configuration complete.\n\n"
