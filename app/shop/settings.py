@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-import os
+
 from pathlib import Path
 from decouple import config
 
@@ -21,12 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='setmeinprod')
+SECRET_KEY = 'django-insecure-=w+^e#vynzh034r0(cdwx%u&i_m9hqu@*29_8%i(n0n+atabvn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(config('DEBUG', default=0)))
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -85,8 +86,16 @@ DATABASES = {
         'PORT': config('SQL_PORT'),
     }
 }
-
-
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+#         'LOCATION': 'default_cache',
+#         'OPTIONS': {
+#             'MAX_ENTRIES': 1000
+#         },
+#         'TIMEOUT': 60 * 60 * 24 * 7
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -121,10 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+STATIC_URL = 'static/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -132,4 +139,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET')
-BASE_URL = 'http://127.0.0.1:8469'
+BASE_URL = 'http://127.0.0.1:8000'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
